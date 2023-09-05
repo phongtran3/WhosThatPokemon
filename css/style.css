@@ -6,3 +6,8 @@
 body {
     font-family: 'Press Start 2P', cursive;
 }
+
+
+.genSelected{
+    color:red;
+}

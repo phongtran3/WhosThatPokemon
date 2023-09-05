@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Who's That Pokemonm</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -18,23 +15,26 @@
       <div class="generations-container">
         <h3>Generations</h3>
         <div class="generations">
-          <div id="gen1" class="genre">Generation 1</div>
-          <div id="gen2" class="genre">Generation 2</div>
-          <div id="gen3" class="genre">Generation 3</div>
-          <div id="gen4" class="genre">Generation 4</div>
-          <div id="gen5" class="genre">Generation 5</div>
-          <div id="gen6" class="genre">Generation 6</div>
-          <div id="gen7" class="genre">Generation 7</div>
-          <div id="gen8" class="genre">Generation 8</div>
-          <div id="gen9" class="genre">Generation 9</div>
+          <div id="gen1" data-gen="1" title="Red, Blue, &amp; Yellow" class="genre">Generation 1</div>
+          <div id="gen2" data-gen="2" title="Gold, Silver, &amp; Crystal" class="genre">Generation 2</div>
+          <div id="gen3" data-gen="3" title="Ruby, Sapphire, &amp; Emerald" class="genre">Generation 3</div>
+          <div id="gen4" data-gen="4" title="Diamond, Pearl, &amp; Platinum" class="genre">Generation 4</div>
+          <div id="gen5" data-gen="5" title="Black &amp; White" class="genre">Generation 5</div>
+          <div id="gen6" data-gen="6" title="X &amp; Y" class="genre">Generation 6</div>
+          <div id="gen7" data-gen="7" title="Sun, Moon, Ultra Sun, &amp; Ultra Moon" class="genre">Generation 7</div>
+          <div id="gen8" data-gen="8" title="Let's Go, Sword, Shield, &amp; Legends: Arceus" class="genre">Generation 8</div>
+          <div id="gen9" data-gen="9" title="Scarlet &amp; Violet" class="genre">Generation 9</div>
         </div>
       </div>
 
       <div class="main-content">
         <div id="game-content">
           <p>Game Content</p>
-          <!-- <div id="canvas-container"><img src="/images/artwork/3.png" /></div>
-          <div class="options">
+
+          <div id="canvas-container">
+            <canvas id="shadowImage" onload="centerPokemon();">You need a new-ish browser to play this, and you need Javascript enabled too.</canvas>
+          </div>
+          <!-- <div class="options">
             <button class="option"></button>
             <button class="option"></button>
             <button class="option"></button>
@@ -45,20 +45,21 @@
           </div> -->
         </div>
       </div>
+
       <div class="streak-container">
         <h3>Streak</h3>
         <div class="streaks">
           <div class="streak">
-            <h5>Current</h5>
-            <p>15</p>
+            <h3>Current</h3>
+            <h1 class="current-count-txt">15</h1>
           </div>
           <div class="streak">
-            <h5>Best</h5>
-            <p>100</p>
+            <h3>Best</h3>
+            <h1 class="best-count-txt">100</h1>
           </div>
         </div>
       </div>
     </div>
-    <script src="/js/javascript.js"></script>
+    <script type="module" src="/js/javascript.js"></script>
   </body>
 </html>
