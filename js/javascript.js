@@ -35,7 +35,7 @@ function onReady() {
   loadState();
   generateNewPokeNumbers();
   currentPokemonNumber = getNextPokemonNumber();
-
+  displayPokemon();
   console.log("onReady Done");
 }
 
@@ -85,13 +85,20 @@ function displayPokemon() {
   clearCanvas("shadowImage");
 
   updateStreak();
-  //saveState();
+  saveState();
 
   if (currentPokemonNumber === -1) {
     onGenFinished();
   } else {
     currentPokemonName = getPokemonName(currentPokemonNumber);
-    console.log(currentPokemonName);
+    //console.log(currentPokemonName);
+    currentPokemonImgUrl = getPokemonImageUrl(currentPokemonNumber);
+    //console.log(currentPokemonImgUrl);
+
+    if (currentPokemonImgUrl !== null) {
+      let shouldSilhouette = true;
+      silhouette(currentPokemonImgUrl, "shadowImage", shouldSilhouette);
+    }
   }
 }
 
@@ -101,6 +108,38 @@ function clearCanvas(canvasId) {
   const ctx = canvas.getContext("2d");
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function silhouette(imageUrl, canvasId, doSilhouette) {
+  if (imageUrl === null) return false;
+
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext("2d");
+  loadedImage = new Image();
+  loadedImage.src = imageUrl;
+
+  loadedImage.onload = function () {
+    canvas.width = loadedImage.width;
+    canvas.height = loadedImage.height;
+
+    ctx.drawImage(loadedImage, 0, 0, canvas.width, canvas.height);
+    if (doSilhouette) {
+      let rawImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < rawImage.data.length; i += 4) {
+        if (rawImage.data[i + 3] >= 100) {
+          rawImage.data[i] = 30;
+          rawImage.data[i + 1] = 30;
+          rawImage.data[i + 2] = 30;
+          rawImage.data[i + 3] = 255;
+        } else {
+          rawImage.data[i + 3] = 0;
+        }
+      }
+
+      ctx.putImageData(rawImage, 0, 0);
+    }
+  };
 }
 
 function onGenFinished() {
