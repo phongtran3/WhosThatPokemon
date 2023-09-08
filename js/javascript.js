@@ -65,12 +65,12 @@ function setGen(genId) {
     document.getElementById(`gen${genId}`)?.classList.add("genSelected");
   }
   currentGen = genId;
-
   correctCount[genId - 1] = 0;
 
   generateNewPokeNumbers();
   currentPokemonNumber = getNextPokemonNumber();
   displayPokemon();
+  generateOptionsUI();
 }
 
 //Re-generates the array of Pokémon numbers
@@ -259,11 +259,11 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+//Remove the silhouette of the Pokemon
 function revealPokemon(isCorrectGuess) {
   console.log(isCorrectGuess);
   silhouette(currentPokemonImgUrl, "shadowImage", false);
 
-  //element.style.display = 'none';
   document.getElementById("skip").style.display = "none";
   document.getElementById("next").style.display = "";
 
@@ -293,4 +293,6 @@ function nextPokemon() {
 
 function skipPokemon() {
   console.log("skipPokemon");
+  correctCount[currentGen - 1] = 0;
+  nextPokemon();
 }
