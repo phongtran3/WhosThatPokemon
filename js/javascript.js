@@ -32,7 +32,12 @@ function onReady() {
     setGen(parseInt(this.getAttribute("data-gen"), 10));
   }
   document.querySelectorAll(".genre").forEach((el) => el.addEventListener("click", onGenClick));
-  document.getElementsByClassName("next-btn")[0].style.display = "none";
+  const canvas = document.getElementById("shadowImage");
+  canvas.willReadFrequently = true;
+
+  document.getElementById("next").addEventListener("click", nextPokemon);
+  document.getElementById("skip").addEventListener("click", skipPokemon);
+  document.getElementById("next").style.display = "none";
 
   loadState();
   generateNewPokeNumbers();
@@ -87,7 +92,6 @@ function generateNewPokeNumbers() {
 function displayPokemon() {
   console.log("Display Pokemon");
   clearCanvas("shadowImage");
-
   updateStreak();
   saveState();
 
@@ -260,8 +264,8 @@ function revealPokemon(isCorrectGuess) {
   silhouette(currentPokemonImgUrl, "shadowImage", false);
 
   //element.style.display = 'none';
-  document.getElementsByClassName("skip-btn")[0].style.display = "none";
-  document.getElementsByClassName("next-btn")[0].style.display = "";
+  document.getElementById("skip").style.display = "none";
+  document.getElementById("next").style.display = "";
 
   if (isCorrectGuess) {
     correctCount[currentGen - 1]++;
@@ -276,4 +280,17 @@ function revealPokemon(isCorrectGuess) {
   }
 
   updateStreak();
+}
+
+function nextPokemon() {
+  console.log("nextPokemon");
+  currentPokemonNumber = getNextPokemonNumber();
+  displayPokemon();
+  generateOptionsUI();
+  document.getElementById("next").style.display = "none";
+  document.getElementById("skip").style.display = "";
+}
+
+function skipPokemon() {
+  console.log("skipPokemon");
 }
