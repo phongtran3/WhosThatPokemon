@@ -32,6 +32,7 @@ function onReady() {
     setGen(parseInt(this.getAttribute("data-gen"), 10));
   }
   document.querySelectorAll(".genre").forEach((el) => el.addEventListener("click", onGenClick));
+  document.getElementsByClassName("next-btn")[0].style.display = "none";
 
   loadState();
   generateNewPokeNumbers();
@@ -221,12 +222,11 @@ function checkPokemonAnswer(e) {
 
   if (userSolution === currentPokemonName) {
     e.target.classList.add("correct");
-    correctCount[currentGen]++;
     revealPokemon(true);
   } else {
     e.target.classList.add("incorrect");
     options.forEach((element) => {
-      if (element.innerText == currentPokemonName) {
+      if (element.innerText.toLowerCase() == currentPokemonName) {
         element.classList.add("correct");
       }
     });
@@ -258,4 +258,22 @@ function capitalizeFirstLetter(string) {
 function revealPokemon(isCorrectGuess) {
   console.log(isCorrectGuess);
   silhouette(currentPokemonImgUrl, "shadowImage", false);
+
+  //element.style.display = 'none';
+  document.getElementsByClassName("skip-btn")[0].style.display = "none";
+  document.getElementsByClassName("next-btn")[0].style.display = "";
+
+  if (isCorrectGuess) {
+    correctCount[currentGen - 1]++;
+    //Increase best count if beaten
+    if (correctCount[currentGen - 1] > record.streak[currentGen - 1]) {
+      record.streak[currentGen - 1] = correctCount[currentGen - 1];
+      console.log(record.streak[currentGen - 1]);
+    }
+  } else {
+    //Reset count if incorrect
+    correctCount[currentGen - 1] = 0;
+  }
+
+  updateStreak();
 }
