@@ -11,3 +11,11 @@ body {
 .genSelected{
     color:red;
 }
+
+.correct{
+    background: green;
+}
+
+.incorrect{
+    background: red;
+}

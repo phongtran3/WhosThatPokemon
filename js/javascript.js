@@ -9,6 +9,7 @@ const RECORDS_LS_KEY = "wtp_records";
 const Records = {
   streak: [0, 0, 0, 0, 0, 0, 0, 0, 0],
 };
+const optionContainer = document.querySelector(".options-container");
 
 let currentGen = 1; //Hold user current gen selection. Default is 1
 let currentPokemonNumber = -1; //Hold the number of the Pokemon currently on screen. -1 if the user has reached the end of the list generated for them.
@@ -36,6 +37,8 @@ function onReady() {
   generateNewPokeNumbers();
   currentPokemonNumber = getNextPokemonNumber();
   displayPokemon();
+  generateOptionsUI();
+
   console.log("onReady Done");
 }
 
@@ -166,7 +169,7 @@ function loadState() {
 
 function getPokemonName(pokemonNum) {
   const pokemon = POKEMON.find((pokemon) => pokemon.number === pokemonNum);
-  return pokemon ? pokemon.names : null;
+  return pokemon ? pokemon.names.en : null;
 }
 
 function getNextPokemonNumber() {
@@ -186,4 +189,73 @@ function getPokemonImageUrl(pokemonNum) {
   } else {
     return null;
   }
+}
+
+function fisherYatesShuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+  return array;
+}
+
+function populateOptions() {
+  console.log("populateOption");
+  let array = [];
+  array.push(currentPokemonName);
+  let optionCount = 1;
+  while (optionCount < 4) {
+    let randomValue = pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
+    let randomPokemonName = getPokemonName(randomValue);
+    if (!array.includes(randomPokemonName)) {
+      array.push(randomPokemonName);
+      optionCount++;
+    }
+  }
+
+  return array;
+}
+function checkPokemonAnswer(e) {
+  let userSolution = e.target.innerText.toLowerCase();
+  let options = document.querySelectorAll(".option");
+
+  if (userSolution === currentPokemonName) {
+    e.target.classList.add("correct");
+    correctCount[currentGen]++;
+    revealPokemon(true);
+  } else {
+    e.target.classList.add("incorrect");
+    options.forEach((element) => {
+      if (element.innerText == currentPokemonName) {
+        element.classList.add("correct");
+      }
+    });
+    revealPokemon(false);
+  }
+}
+
+function generateOptionsUI() {
+  console.log("generateOptionsUI");
+  let options = fisherYatesShuffle(populateOptions());
+  console.log(options);
+
+  optionContainer.innerHTML = `
+    <button class="option" >${capitalizeFirstLetter(options[0])}</button>
+    <button class="option" >${capitalizeFirstLetter(options[1])}</button>
+    <button class="option" >${capitalizeFirstLetter(options[2])}</button>
+    <button class="option" >${capitalizeFirstLetter(options[3])}</button>
+  `;
+
+  optionContainer.querySelectorAll(".option").forEach((button) => {
+    button.addEventListener("click", checkPokemonAnswer);
+  });
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function revealPokemon(isCorrectGuess) {
+  console.log(isCorrectGuess);
+  silhouette(currentPokemonImgUrl, "shadowImage", false);
 }
