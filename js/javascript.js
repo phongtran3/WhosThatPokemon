@@ -37,6 +37,7 @@ function onReady() {
 
   document.getElementById("next").addEventListener("click", nextPokemon);
   document.getElementById("skip").addEventListener("click", skipPokemon);
+  document.getElementById("giveUp").addEventListener("click", giveUp);
   document.getElementById("next").style.display = "none";
 
   loadState();
@@ -158,6 +159,7 @@ function updateStreak() {
   document.querySelector(".best-count-txt").innerHTML = record.streak[currentGen - 1].toString();
   document.querySelector(".current-count-txt").innerHTML = correctCount[currentGen - 1].toString();
 }
+
 function saveState() {
   if (record) localStorage.setItem(RECORDS_LS_KEY, JSON.stringify(record));
 }
@@ -236,6 +238,8 @@ function checkPokemonAnswer(e) {
     });
     revealPokemon(false);
   }
+
+  document.getElementById("giveUp").style.display = "none";
 }
 
 function generateOptionsUI() {
@@ -289,10 +293,26 @@ function nextPokemon() {
   generateOptionsUI();
   document.getElementById("next").style.display = "none";
   document.getElementById("skip").style.display = "";
+  document.getElementById("giveUp").style.display = "";
 }
 
 function skipPokemon() {
   console.log("skipPokemon");
   correctCount[currentGen - 1] = 0;
   nextPokemon();
+}
+
+function giveUp() {
+  console.log("giveUp");
+  revealPokemon(false);
+  document.getElementById("giveUp").style.display = "none";
+  document.getElementById("skip").style.display = "none";
+  document.getElementById("next").style.display = "";
+
+  let options = document.querySelectorAll(".option");
+  options.forEach((element) => {
+    if (element.innerText.toLowerCase() == currentPokemonName) {
+      element.classList.add("correct");
+    }
+  });
 }
