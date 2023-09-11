@@ -115,6 +115,20 @@ button:hover {
 
 .footer{
     background-color: #DFDFDF;
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-media-links a {
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s linear;
+}
+.social-links:hover i{
+    transform: scale(1.1);
 }
 .genSelected{
     color:red;
