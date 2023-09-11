@@ -23,7 +23,6 @@ let pokemonArray = []; //Array which stores the IDs of the Pokemon to be shown t
 let pokemonArrayIndex = 0; //Index of the pokemonArray array which points to the Pokemon the user is currently guessing.
 
 function onReady() {
-  console.log("onReady");
   document.getElementById(`gen${1}`)?.classList.add("genSelected");
 
   //On click for generations
@@ -45,8 +44,6 @@ function onReady() {
   currentPokemonNumber = getNextPokemonNumber();
   displayPokemon();
   generateOptionsUI();
-
-  console.log("onReady Done");
 }
 
 if (document.readyState !== "loading") {
@@ -60,7 +57,6 @@ Default gen will be 1. When a user selects a new gen, the gen and variables will
 If the user selects the same gen, it will reset the streak and array of pokemons
 */
 function setGen(genId) {
-  console.log("Set Gen: " + genId);
   if (genId !== currentGen) {
     document.getElementById(`gen${currentGen}`)?.classList.remove("genSelected");
     document.getElementById("skip").style.display = "";
@@ -77,7 +73,6 @@ function setGen(genId) {
 
 //Re-generates the array of Pokémon numbers
 function generateNewPokeNumbers() {
-  console.log("generateNewPokeNumbers");
   pokemonArray = [];
   pokemonArrayIndex = 0;
   let start = GENERATIONS[currentGen].start;
@@ -85,14 +80,11 @@ function generateNewPokeNumbers() {
   range(start, end + 1).forEach((pokeNum) => {
     pokemonArray.push(pokeNum);
   });
-  //console.log(pokemonArray);
   pokemonArray = shuffle(pokemonArray);
-  //console.log(pokemonArray);
 }
 
 //Display the new random Pokemon
 function displayPokemon() {
-  console.log("Display Pokemon");
   clearCanvas("shadowImage");
   updateStreak();
   saveState();
@@ -101,9 +93,7 @@ function displayPokemon() {
     onGenFinished();
   } else {
     currentPokemonName = getPokemonName(currentPokemonNumber);
-    //console.log(currentPokemonName);
     currentPokemonImgUrl = getPokemonImageUrl(currentPokemonNumber);
-    //console.log(currentPokemonImgUrl);
 
     if (currentPokemonImgUrl !== null) {
       let shouldSilhouette = true;
@@ -181,7 +171,6 @@ function getPokemonName(pokemonNum) {
 }
 
 function getNextPokemonNumber() {
-  console.log("getNextPokemonNumber");
   let number;
   if (pokemonArrayIndex >= pokemonArray.length || pokemonArray.length === 0) {
     number = -1;
@@ -208,7 +197,6 @@ function fisherYatesShuffle(array) {
 }
 
 function populateOptions() {
-  console.log("populateOption");
   let array = [];
   array.push(currentPokemonName);
   let optionCount = 1;
@@ -244,10 +232,7 @@ function checkPokemonAnswer(e) {
 }
 
 function generateOptionsUI() {
-  console.log("generateOptionsUI");
   let options = fisherYatesShuffle(populateOptions());
-  console.log(options);
-
   optionContainer.innerHTML = `
     <button class="option" >${capitalizeFirstLetter(options[0])}</button>
     <button class="option" >${capitalizeFirstLetter(options[1])}</button>
@@ -266,7 +251,6 @@ function capitalizeFirstLetter(string) {
 
 //Remove the silhouette of the Pokemon
 function revealPokemon(isCorrectGuess) {
-  console.log(isCorrectGuess);
   silhouette(currentPokemonImgUrl, "shadowImage", false);
 
   document.getElementById("skip").style.display = "none";
@@ -277,7 +261,6 @@ function revealPokemon(isCorrectGuess) {
     //Increase best count if beaten
     if (correctCount[currentGen - 1] > record.streak[currentGen - 1]) {
       record.streak[currentGen - 1] = correctCount[currentGen - 1];
-      console.log(record.streak[currentGen - 1]);
     }
   } else {
     //Reset count if incorrect
@@ -288,7 +271,6 @@ function revealPokemon(isCorrectGuess) {
 }
 
 function nextPokemon() {
-  console.log("nextPokemon");
   currentPokemonNumber = getNextPokemonNumber();
   displayPokemon();
   generateOptionsUI();
@@ -298,13 +280,11 @@ function nextPokemon() {
 }
 
 function skipPokemon() {
-  console.log("skipPokemon");
   correctCount[currentGen - 1] = 0;
   nextPokemon();
 }
 
 function giveUp() {
-  console.log("giveUp");
   revealPokemon(false);
   document.getElementById("giveUp").style.display = "none";
   document.getElementById("skip").style.display = "none";
