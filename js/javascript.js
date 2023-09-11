@@ -17,7 +17,7 @@ let currentPokemonName = null;
 let currentPokemonImgUrl = null; //The url of the image of the Pokemon currently on screen.
 let correctCount = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Array of correct answer streaks, one entry for each generation.
 let loadedImage; //The image loaded for the current Pokemon
-let imageDirectory = "images/artwork/";
+let imageDirectory = "../images/artwork/";
 let record = Records; //hold user streak record
 let pokemonArray = []; //Array which stores the IDs of the Pokemon to be shown to the user, based on their selected gen
 let pokemonArrayIndex = 0; //Index of the pokemonArray array which points to the Pokemon the user is currently guessing.
