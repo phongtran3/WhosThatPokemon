@@ -11,14 +11,14 @@
     text-align: center;
     padding: 2rem 0;
     font-size: 1.25rem;
-    background-color: #da2e2c;
+    background-color: #FB1B1B;
 }
 
 .content-container{
     display: flex;
     justify-content: space-evenly;
     /* align-items: center; */
-    background: linear-gradient( #da2e2c 40%, #090029 40%, #090029 42%, #ffffff 42% );
+    background: linear-gradient( #FB1B1B 40%, #090029 40%, #090029 42%, #ffffff 42% );
     height: 100vh;
 }
 
@@ -131,7 +131,7 @@ button:hover {
     transform: scale(1.1);
 }
 .genSelected{
-    color:red;
+    color:#FB1B1B;
 }
 
 .correct{
@@ -139,5 +139,5 @@ button:hover {
 }
 
 .incorrect{
-    background: red;
+    background: #FB1B1B;
 }
