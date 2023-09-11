@@ -94,7 +94,6 @@ function displayPokemon() {
   } else {
     currentPokemonName = getPokemonName(currentPokemonNumber);
     currentPokemonImgUrl = getPokemonImageUrl(currentPokemonNumber);
-    console.log(currentPokemonImgUrl);
 
     if (currentPokemonImgUrl !== null) {
       let shouldSilhouette = true;
@@ -184,7 +183,6 @@ function getNextPokemonNumber() {
 
 function getPokemonImageUrl(pokemonNum) {
   if (imageDirectory !== null) {
-    console.log(imageDirectory + pokemonNum + ".png");
     return imageDirectory + pokemonNum + ".png";
   } else {
     return null;
