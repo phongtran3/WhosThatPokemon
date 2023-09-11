@@ -17,7 +17,7 @@ let currentPokemonName = null;
 let currentPokemonImgUrl = null; //The url of the image of the Pokemon currently on screen.
 let correctCount = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Array of correct answer streaks, one entry for each generation.
 let loadedImage; //The image loaded for the current Pokemon
-let imageDirectory = "../images/artwork/";
+let imageDirectory = "https://phongtran3.github.io/WhosThatPokemon/images/artwork/";
 let record = Records; //hold user streak record
 let pokemonArray = []; //Array which stores the IDs of the Pokemon to be shown to the user, based on their selected gen
 let pokemonArrayIndex = 0; //Index of the pokemonArray array which points to the Pokemon the user is currently guessing.
@@ -94,6 +94,7 @@ function displayPokemon() {
   } else {
     currentPokemonName = getPokemonName(currentPokemonNumber);
     currentPokemonImgUrl = getPokemonImageUrl(currentPokemonNumber);
+    console.log(currentPokemonImgUrl);
 
     if (currentPokemonImgUrl !== null) {
       let shouldSilhouette = true;
@@ -117,6 +118,7 @@ function silhouette(imageUrl, canvasId, doSilhouette) {
   const ctx = canvas.getContext("2d");
   loadedImage = new Image();
   loadedImage.src = imageUrl;
+  loadedImage.crossOrigin = "anonymous";
 
   loadedImage.onload = function () {
     canvas.width = loadedImage.width;
@@ -182,6 +184,7 @@ function getNextPokemonNumber() {
 
 function getPokemonImageUrl(pokemonNum) {
   if (imageDirectory !== null) {
+    console.log(imageDirectory + pokemonNum + ".png");
     return imageDirectory + pokemonNum + ".png";
   } else {
     return null;
