@@ -63,6 +63,7 @@ function setGen(genId) {
   console.log("Set Gen: " + genId);
   if (genId !== currentGen) {
     document.getElementById(`gen${currentGen}`)?.classList.remove("genSelected");
+    document.getElementById("skip").style.display = "";
     document.getElementById(`gen${genId}`)?.classList.add("genSelected");
   }
   currentGen = genId;
