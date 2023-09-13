@@ -9,19 +9,27 @@
 
 .title{
     text-align: center;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     font-size: 1.25rem;
+    line-height: 1.25;
     background-color: #FB1B1B;
 }
 
 .content-container{
-    display: flex;
+    /* display: flex;
     justify-content: space-evenly;
-    /* align-items: center; */
+    flex-direction: column;
     background: linear-gradient( #FB1B1B 40%, #090029 40%, #090029 42%, #ffffff 42% );
-    height: 100vh;
+    min-height: 100vh; */
 }
 
+.content-wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background: linear-gradient( #FB1B1B 40%, #090029 40%, #090029 42%, #ffffff 42% );
+    min-height: 100vh;
+}
 
 .generations-container{
     display: flex;
@@ -51,7 +59,8 @@
 
 .main-content{
     height: 700px;
-    width: 800px;
+    max-width: 800px;
+    min-width: 300px;
     background-color: #ffffff;
     border: #000000 solid 10px;
 }
@@ -119,6 +128,7 @@ button:hover {
     padding: 2rem;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .social-media-links a {
@@ -140,4 +150,66 @@ button:hover {
 
 .incorrect{
     background: #FB1B1B;
+}
+
+@media screen and (max-width: 1440px){
+
+
+}
+
+@media screen and (max-width: 1200px) {
+    .main-content{
+        width: 75%;
+    }
+    .content-wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    #canvas-container{
+        min-height: 350px;
+        margin: 1rem 0;
+    }
+    #shadowImage{
+        max-width: 50%;
+    }
+    .options-container{
+        padding: 0 0.5rem;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-direction: column;
+    }
+    .button-div{
+        display: flex;
+        justify-content: flex-end;
+        column-gap: 1rem;
+        padding: 0 0.5rem;
+        float: none;
+        margin-right: 0;
+    }
+    .copyright, .footer-title{
+        font-size: .7rem;
+    }
+    .social-media-links a{
+        font-size: 1.5rem;
+    }
+    .streak-container{
+        width: 75%;
+        max-width: 800px;
+        min-width: 300px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .footer{
+        background-color: #DFDFDF;
+        display: flex;
+        padding: 1rem;
+        align-items: flex-start;
+        margin-top: 1rem;
+        gap: 1rem;
+        flex-direction: column;
+    }
 }
