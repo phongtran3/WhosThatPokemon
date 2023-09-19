@@ -15,13 +15,13 @@
     background-color: #FB1B1B;
 }
 
-.content-container{
-    /* display: flex;
+/* .content-container{
+    display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     background: linear-gradient( #FB1B1B 40%, #090029 40%, #090029 42%, #ffffff 42% );
-    min-height: 100vh; */
-}
+    min-height: 100vh;
+} */
 
 .content-wrapper{
     display: flex;
@@ -165,7 +165,7 @@ button:hover {
     }
     .content-wrapper{
         display: flex;
-        flex-direction: column-reverse;
+        /* flex-direction: column-reverse; */
         align-items: center;
         gap: 1rem;
         flex-wrap: wrap;
