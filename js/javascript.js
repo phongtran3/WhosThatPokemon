@@ -60,6 +60,8 @@ function setGen(genId) {
   if (genId !== currentGen) {
     document.getElementById(`gen${currentGen}`)?.classList.remove("genSelected");
     document.getElementById("skip").style.display = "";
+    document.getElementById("giveUp").style.display = "";
+    document.getElementById("next").style.display = "none";
     document.getElementById(`gen${genId}`)?.classList.add("genSelected");
   }
   currentGen = genId;
