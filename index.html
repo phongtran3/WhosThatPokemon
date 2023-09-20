@@ -10,13 +10,14 @@
     <link rel="icon" type="image/x-icon" href="/WhosThatPokemon/assets/pokeball.ico" />
   </head>
   <body>
+    <div id="gen-overlay" class="sel-gen-overlay mobile" style="display: none;"></div>
     <div class="title">
       <h1>Who's That Pokemon?</h1>
     </div>
-    
+
     <div class="content-container">
       <div class="content-wrapper">
-      <div class="generations-container">
+      <div id="gen-container" class="generations-container">
         <h3 class="gen-title">Generations</h3>
         <div class="generations">
           <div id="gen1" data-gen="1" title="Red, Blue, &amp; Yellow" class="genre">Generation 1</div>
@@ -59,7 +60,9 @@
           </div>
         </div>
       </div>
+      <div id="genSelect-mobile" class="gen-mobile">Select Generation</div>
     </div>
+
     <footer class="footer">
       <div class="copyright">
         <p>&copy; Phong Tran</p>

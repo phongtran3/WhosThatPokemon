@@ -31,6 +31,23 @@ function onReady() {
     setGen(parseInt(this.getAttribute("data-gen"), 10));
   }
   document.querySelectorAll(".genre").forEach((el) => el.addEventListener("click", onGenClick));
+
+  function onSelectGenClick(e) {
+    console.log("Select Generation");
+    let overlay = document.querySelector(".sel-gen-overlay");
+    overlay.style.display = overlay.style.display === "none" ? "block" : "none";
+    document.getElementById("gen-container").classList.add("showOverlay");
+  }
+
+  document.getElementById("genSelect-mobile").addEventListener("click", onSelectGenClick);
+
+  function onGenOverlayClick(e) {
+    console.log("Overlay");
+    document.querySelector(".sel-gen-overlay").style.display = "none";
+    document.getElementById("gen-container").classList.remove("showOverlay");
+  }
+  document.getElementById("gen-overlay").addEventListener("click", onGenOverlayClick);
+
   const canvas = document.getElementById("shadowImage");
   canvas.willReadFrequently = true;
 

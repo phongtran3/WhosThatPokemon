@@ -34,6 +34,7 @@
 }
 
 .generations-container{
+    text-align: center;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -66,6 +67,7 @@
     background-color: #ffffff;
     border: #000000 solid 10px;
     flex: 1;
+    padding-bottom: 1rem;
 }
 
 #canvas-container{
@@ -155,8 +157,18 @@ button:hover {
     background: #FB1B1B;
 }
 
-.mobile{
+
+.gen-mobile{
     display: none;
+}
+.sel-gen-overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.5);
 }
 
 @media screen and (max-width: 1200px) {
@@ -213,5 +225,49 @@ button:hover {
         margin-top: 1rem;
         gap: 1rem;
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 620px){
+    .content-wrapper{
+        flex-direction: column-reverse;
+    }
+    .gen-mobile{
+        display: block;
+        background-color: #ffffff;
+        border: #000000 solid 10px;
+        padding: 1rem;
+        width: 75%;
+        min-width: 300px;
+        text-align: center;
+        line-height: 1.25rem;
+        cursor: pointer;
+    }
+
+    .generations-container{
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        padding: 10px;
+        box-shadow: 0 0 2px 2px rgba(0,0,0,0.5);
+        transition: all 0.2s;
+        overflow-y: auto;
+        z-index: 100;
+    }
+    
+    .generations-container#gen-container{
+        left: -75%;
+    }
+    
+    .generations-container#gen-container.showOverlay {
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 535px){
+    .generations-container{
+        width: 75%;
+        
     }
 }
