@@ -1,3 +1,11 @@
+:root {
+    --torchRed: #FB1B1B;
+    --white: #ffffff;
+    --gold: #D5A100;
+    
+    --font-family: 'Press Start 2P', sans-serif, cursive;
+}
+
 * {
     margin: 0;
     padding: 0;
