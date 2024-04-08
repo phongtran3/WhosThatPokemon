@@ -52,7 +52,6 @@ function onReady() {
   canvas.willReadFrequently = true;
 
   document.getElementById("next").addEventListener("click", nextPokemon);
-  document.getElementById("skip").addEventListener("click", skipPokemon);
   document.getElementById("giveUp").addEventListener("click", giveUp);
   document.getElementById("next").style.display = "none";
 
@@ -76,7 +75,6 @@ If the user selects the same gen, it will reset the streak and array of pokemons
 function setGen(genId) {
   if (genId !== currentGen) {
     document.getElementById(`gen${currentGen}`)?.classList.remove("genSelected");
-    document.getElementById("skip").style.display = "";
     document.getElementById("giveUp").style.display = "";
     document.getElementById("next").style.display = "none";
     document.getElementById(`gen${genId}`)?.classList.add("genSelected");
@@ -107,7 +105,6 @@ function displayPokemon() {
   clearCanvas("shadowImage");
   updateStreak();
   saveState();
-
   if (currentPokemonNumber === -1) {
     onGenFinished();
   } else {
@@ -231,6 +228,7 @@ function populateOptions() {
 
   return array;
 }
+
 function checkPokemonAnswer(e) {
   let userSolution = e.target.innerText.toLowerCase();
   let options = document.querySelectorAll(".option");
@@ -273,7 +271,6 @@ function capitalizeFirstLetter(string) {
 function revealPokemon(isCorrectGuess) {
   silhouette(currentPokemonImgUrl, "shadowImage", false);
 
-  document.getElementById("skip").style.display = "none";
   document.getElementById("next").style.display = "";
 
   if (isCorrectGuess) {
@@ -295,19 +292,12 @@ function nextPokemon() {
   displayPokemon();
   generateOptionsUI();
   document.getElementById("next").style.display = "none";
-  document.getElementById("skip").style.display = "";
   document.getElementById("giveUp").style.display = "";
-}
-
-function skipPokemon() {
-  correctCount[currentGen - 1] = 0;
-  nextPokemon();
 }
 
 function giveUp() {
   revealPokemon(false);
   document.getElementById("giveUp").style.display = "none";
-  document.getElementById("skip").style.display = "none";
   document.getElementById("next").style.display = "";
 
   let options = document.querySelectorAll(".option");
