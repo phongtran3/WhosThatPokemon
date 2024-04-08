@@ -82,6 +82,10 @@ function setGen(genId) {
   currentGen = genId;
   correctCount[genId - 1] = 0;
 
+  let overlay = document.querySelector(".sel-gen-overlay");
+  overlay.style.display = overlay.style.display === "none" ? "block" : "none";
+  document.getElementById("gen-container").classList.remove("showOverlay");
+
   generateNewPokeNumbers();
   currentPokemonNumber = getNextPokemonNumber();
   displayPokemon();
