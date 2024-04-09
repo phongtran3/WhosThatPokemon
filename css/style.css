@@ -6,7 +6,9 @@
     --black: #000000;
     --gold: #D5A100;
     --lightGray: #DFDFDF;
+    --indigo: #090028;
     --font-family: 'Press Start 2P', sans-serif, cursive;
+    --font-size-body: 16px;
 }
 
 *, *::before, *::after {
@@ -28,6 +30,7 @@ h4 {
 body{
     margin: 0;
     font-family: var(--font-family);
+    font-size: var(--font-size-body);
 }
 
 button {
@@ -57,13 +60,20 @@ img {
 
 .gen-mobile{
     display: block;
-    background-color: #ffffff;
-    border: #000000 solid 5px;
-    padding: 1rem;
+    background-color: var(--white);
+    border: var(--black) solid 5px;
+    padding: .5rem;
     text-align: center;
     line-height: 1.25rem;
     cursor: pointer;
+    margin-bottom: 1rem;
 }
+
+.gen-mobile h3 {
+    font-size: .75rem;
+}
+
+
 
 .gen-mobile:hover,
 .gen-mobile:focus{
@@ -83,6 +93,7 @@ img {
     z-index: 100;
     background-color: var(--white);
     border: #000000 solid 5px;
+    max-width: 30vh;
 }
 
 .generations-container#gen-container{
@@ -124,6 +135,18 @@ img {
     background-color: var(--gold);
 }
 
+.genSelected{
+    color:#FB1B1B;
+}
+
+.correct{
+    background: green;
+}
+
+.incorrect{
+    background: #FB1B1B;
+}
+
 .close-button{
     position: absolute;
     top: 0;
@@ -138,7 +161,106 @@ img {
 }
 
 
+.content-wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+}
 
+.streak-container{
+    background-color: var(--white);
+    border: var(--black) solid 5px;
+    padding: .75rem;
+}
+
+.streak-title {
+    text-align: center;
+    margin-bottom: .5rem;
+    font-size: .75rem
+}
+
+.streaks{
+    display: flex;
+    justify-content: space-around;
+    font-size: .75rem;
+}
+
+.streak{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-content{
+    background-color: var(--white);
+    border: var(--black) solid 5px;
+    margin: 1rem 0;
+}
+
+#game-content {
+    padding: 1rem;
+}
+
+#canvas-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    height: 350px;
+}
+
+#shadowImage{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.options-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-bottom: 2rem;
+} 
+
+.option {
+    margin-bottom: 1rem;
+}
+
+
+
+button {
+    cursor: pointer;
+    background-color: var(--white);
+    padding: 0.8em;
+    border: 0.3em solid var(--indigo);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0 0 var(--indigo);
+}
+
+
+button:hover {
+    box-shadow: none;
+    transform: translateY(0.2em);
+  }
+
+.footer{
+    background-color: #DFDFDF;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .75rem;
+}
+
+.social-media-links a {
+    font-size: 1.25rem;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s linear;
+}
+
+.social-links:hover i{
+    transform: scale(1.1);
+}
 
 /* .content-wrapper{
     display: flex;
@@ -190,20 +312,7 @@ img {
 } */
 
 /* Buttons. Credit to https://codingartistweb.com/2023/04/whos-that-pokemon-javascript-project/ */
-/* button {
-    background-color: #ffffff;
-    padding: 0.8em;
-    border: 0.3em solid #090028;
-    border-radius: 0.5em;
-    cursor: pointer;
-    box-shadow: 0.2em 0.2em 0 0 #090028;
-}
-
-
-button:hover {
-    box-shadow: none;
-    transform: translateY(0.2em);
-  }
+/* 
 
 .button-div{
     float: right;
@@ -219,51 +328,6 @@ button:hover {
 }
 
 
-.streaks{
-    display: flex;
-    justify-content: space-around;
-}
-
-.streak{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 120px;
-    gap: 1rem;
-}
-
-
-.footer{
-    background-color: #DFDFDF;
-    display: flex;
-    padding: 2rem;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.social-media-links a {
-    font-size: 2rem;
-    color: black;
-    text-decoration: none;
-    transition: all 0.3s linear;
-}
-
-.social-links:hover i{
-    transform: scale(1.1);
-}
-
-.genSelected{
-    color:#FB1B1B;
-}
-
-.correct{
-    background: green;
-}
-
-.incorrect{
-    background: #FB1B1B;
-}
 
 .generations-container {
     display: none;

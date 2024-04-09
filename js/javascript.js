@@ -33,7 +33,7 @@ function onReady() {
   document.querySelectorAll(".genre").forEach((el) => el.addEventListener("click", onGenClick));
 
   function onSelectGenClick(e) {
-    console.log("Select Generation");
+    // console.log("Select Generation");
     let overlay = document.querySelector(".sel-gen-overlay");
     overlay.style.display = overlay.style.display === "none" ? "block" : "none";
     document.getElementById("gen-container").classList.add("showOverlay");
@@ -42,7 +42,7 @@ function onReady() {
   document.getElementById("genSelect-mobile").addEventListener("click", onSelectGenClick);
 
   function onGenOverlayClick(e) {
-    console.log("Overlay");
+    // console.log("Overlay");
     document.querySelector(".sel-gen-overlay").style.display = "none";
     document.getElementById("gen-container").classList.remove("showOverlay");
   }
@@ -269,7 +269,14 @@ function generateOptionsUI() {
 }
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  if (string.length === 0) return string.charAt(0).toUpperCase() + string.slice(1);
+  else {
+    let words = string.toLowerCase().split(" ");
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i].charAt(0).toUpperCase() + words[i].substring(1);
+    }
+    return words.join(" ");
+  }
 }
 
 //Remove the silhouette of the Pokemon
