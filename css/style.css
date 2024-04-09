@@ -118,9 +118,9 @@ img {
 
 .content-container{
     background: linear-gradient( #FB1B1B 40%, #090029 40%, #090029 42%, #ffffff 42% );
-    margin: 0 auto;
+    margin: 0 auto 1rem;
     padding: 0 1rem;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 
 .genre{
@@ -226,8 +226,6 @@ img {
     margin-bottom: 1rem;
 }
 
-
-
 button {
     cursor: pointer;
     background-color: var(--white);
@@ -241,19 +239,22 @@ button {
 button:hover {
     box-shadow: none;
     transform: translateY(0.2em);
-  }
+}
+
+.next-div{
+    width: fit-content;
+    margin-left: auto;
+}
 
 .footer{
-    background-color: #DFDFDF;
+    background-color: var(--lightGray);
     padding: 1rem;
-    justify-content: space-between;
-    align-items: center;
     font-size: .75rem;
 }
 
 .social-media-links a {
     font-size: 1.25rem;
-    color: black;
+    color: var(--black);
     text-decoration: none;
     transition: all 0.3s linear;
 }
@@ -262,78 +263,8 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* .content-wrapper{
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    min-height: 100vh;
-    gap: .5rem;
-    padding: 0 1rem;
-}
-
-.generations-container{
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    background-color: #ffffff;
-    padding: 1rem;
-    height: 700px;
-}
-
-.streak-title, .gen-title{
-    text-align: center;
-    margin-bottom: 1rem;
-}
 
 
-.main-content{
-    height: 700px;
-    max-width: 800px;
-    min-width: 300px;
-    background-color: #ffffff;
-    border: #000000 solid 10px;
-    flex: 1;
-    padding-bottom: 1rem;
-}
-
-#canvas-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 500px;
-}
-
-.options-container{
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2rem;
-} */
-
-/* Buttons. Credit to https://codingartistweb.com/2023/04/whos-that-pokemon-javascript-project/ */
-/* 
-
-.button-div{
-    float: right;
-    margin-right: 3rem;
-}
-
-.streak-container{
-    width: 300px;
-    height: 150px;
-    background-color: #ffffff;
-    border: #000000 solid 10px;
-    padding: 1rem;
-}
-
-
-
-.generations-container {
-    display: none;
-}
-
-*/
 
 /* @media screen and (max-width: 1200px) {
     .main-content{
