@@ -47,6 +47,7 @@ function onReady() {
     document.getElementById("gen-container").classList.remove("showOverlay");
   }
   document.getElementById("gen-overlay").addEventListener("click", onGenOverlayClick);
+  document.getElementById("close-btn").addEventListener("click", onGenOverlayClick);
 
   const canvas = document.getElementById("shadowImage");
   canvas.willReadFrequently = true;

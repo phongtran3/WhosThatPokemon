@@ -3,6 +3,7 @@
 :root {
     --torchRed: #FB1B1B;
     --white: #ffffff;
+    --black: #000000;
     --gold: #D5A100;
     --lightGray: #DFDFDF;
     --font-family: 'Press Start 2P', sans-serif, cursive;
@@ -10,7 +11,12 @@
 
 *, *::before, *::after {
     box-sizing: border-box;
-  }
+}
+
+a{
+    text-decoration: none;
+}
+
 
 h1,
 h2,
@@ -117,6 +123,21 @@ img {
 .genre:focus{
     background-color: var(--gold);
 }
+
+.close-button{
+    position: absolute;
+    top: 0;
+    padding: .75rem;
+    color: var(--black);
+    right: 0;
+}
+
+.close-button:hover,
+.close-button:focus {
+    background-color: var(--gold);
+}
+
+
 
 
 /* .content-wrapper{
