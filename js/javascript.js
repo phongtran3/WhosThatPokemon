@@ -33,7 +33,6 @@ function onReady() {
   document.querySelectorAll(".genre").forEach((el) => el.addEventListener("click", onGenClick));
 
   function onSelectGenClick(e) {
-    // console.log("Select Generation");
     let overlay = document.querySelector(".sel-gen-overlay");
     overlay.style.display = overlay.style.display === "none" ? "block" : "none";
     document.getElementById("gen-container").classList.add("showOverlay");
@@ -42,7 +41,6 @@ function onReady() {
   document.getElementById("genSelect-mobile").addEventListener("click", onSelectGenClick);
 
   function onGenOverlayClick(e) {
-    // console.log("Overlay");
     document.querySelector(".sel-gen-overlay").style.display = "none";
     document.getElementById("gen-container").classList.remove("showOverlay");
   }
@@ -114,7 +112,6 @@ function generateNewPokeNumbers() {
 
 //Display the new random Pokemon
 function displayPokemon() {
-  console.log(pokemonArrayIndex);
   clearCanvas("shadowImage");
   updateStreak();
   saveState();
@@ -123,7 +120,6 @@ function displayPokemon() {
   } else {
     currentPokemonName = getPokemonName(currentPokemonNumber);
     currentPokemonImgUrl = getPokemonImageUrl(currentPokemonNumber);
-    console.log(currentPokemonImgUrl);
     if (currentPokemonImgUrl !== null) {
       let shouldSilhouette = true;
       silhouette(currentPokemonImgUrl, "shadowImage", shouldSilhouette);
@@ -172,9 +168,7 @@ function silhouette(imageUrl, canvasId, doSilhouette) {
   };
 }
 
-//overlay.style.display = overlay.style.display === "none" ? "block" : "none";
 function onGenFinished() {
-  console.log("Gen Finished");
   let onGenFinished = document.getElementById("gen-finished");
   let gameContent = document.getElementById("game-content");
   onGenFinished.style.display = onGenFinished.style.display === "none" ? "flex" : "none";
@@ -254,15 +248,18 @@ function checkPokemonAnswer(e) {
   if (userSolution === currentPokemonName) {
     e.target.classList.add("correct");
     revealPokemon(true);
+    this.removeEventListener("click", checkPokemonAnswer);
   } else {
     e.target.classList.add("incorrect");
-    options.forEach((element) => {
-      if (element.innerText.toLowerCase() == currentPokemonName) {
-        element.classList.add("correct");
-      }
-    });
     revealPokemon(false);
   }
+
+  options.forEach((element) => {
+    if (element.innerText.toLowerCase() == currentPokemonName) {
+      element.classList.add("correct");
+    }
+    element.removeEventListener("click", checkPokemonAnswer);
+  });
 
   document.getElementById("giveUp").style.display = "none";
 }
@@ -330,5 +327,6 @@ function giveUp() {
     if (element.innerText.toLowerCase() == currentPokemonName) {
       element.classList.add("correct");
     }
+    element.removeEventListener("click", checkPokemonAnswer);
   });
 }
