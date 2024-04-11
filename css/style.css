@@ -19,6 +19,13 @@ a{
     text-decoration: none;
 }
 
+.loader-container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
 
 h1,
 h2,

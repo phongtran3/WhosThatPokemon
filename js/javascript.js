@@ -24,6 +24,8 @@ let pokemonArrayIndex = 0; //Index of the pokemonArray array which points to the
 
 function onReady() {
   document.getElementById(`gen${1}`)?.classList.add("genSelected");
+  document.getElementById("game-content").classList.remove("hidden");
+  document.getElementById("loader").classList.add("hidden");
 
   //On click for generations
   function onGenClick(e) {
@@ -101,7 +103,7 @@ function setGen(genId) {
 //Re-generates the array of Pokémon numbers
 function generateNewPokeNumbers() {
   pokemonArray = [];
-  pokemonArrayIndex = 150;
+  pokemonArrayIndex = 0;
   let start = GENERATIONS[currentGen].start;
   let end = GENERATIONS[currentGen].end;
   range(start, end + 1).forEach((pokeNum) => {
