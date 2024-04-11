@@ -87,7 +87,7 @@ function setGen(genId) {
   document.getElementById("gen-container").classList.remove("showOverlay");
 
   let onGenFinished = document.getElementById("gen-finished");
-  onGenFinished.style.display = onGenFinished.style.display === "none" ? "flex" : "none";
+  onGenFinished.style.display = onGenFinished.style.display === "flex" ? "none" : onGenFinished.style.display;
 
   let gameContent = document.getElementById("game-content");
   if (gameContent.classList.contains("hidden")) gameContent.classList.remove("hidden");
@@ -101,7 +101,7 @@ function setGen(genId) {
 //Re-generates the array of Pokémon numbers
 function generateNewPokeNumbers() {
   pokemonArray = [];
-  pokemonArrayIndex = 0;
+  pokemonArrayIndex = 150;
   let start = GENERATIONS[currentGen].start;
   let end = GENERATIONS[currentGen].end;
   range(start, end + 1).forEach((pokeNum) => {
