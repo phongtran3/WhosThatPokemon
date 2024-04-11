@@ -55,6 +55,7 @@ function onReady() {
   document.getElementById("next").addEventListener("click", nextPokemon);
   document.getElementById("giveUp").addEventListener("click", giveUp);
   document.getElementById("next").style.display = "none";
+  document.getElementById("gen-finished").style.display = "none";
 
   loadState();
   generateNewPokeNumbers();
@@ -87,6 +88,12 @@ function setGen(genId) {
   overlay.style.display = overlay.style.display === "none" ? "block" : "none";
   document.getElementById("gen-container").classList.remove("showOverlay");
 
+  let onGenFinished = document.getElementById("gen-finished");
+  onGenFinished.style.display = onGenFinished.style.display === "none" ? "flex" : "none";
+
+  let gameContent = document.getElementById("game-content");
+  if (gameContent.classList.contains("hidden")) gameContent.classList.remove("hidden");
+
   generateNewPokeNumbers();
   currentPokemonNumber = getNextPokemonNumber();
   displayPokemon();
@@ -107,6 +114,7 @@ function generateNewPokeNumbers() {
 
 //Display the new random Pokemon
 function displayPokemon() {
+  console.log(pokemonArrayIndex);
   clearCanvas("shadowImage");
   updateStreak();
   saveState();
@@ -115,7 +123,7 @@ function displayPokemon() {
   } else {
     currentPokemonName = getPokemonName(currentPokemonNumber);
     currentPokemonImgUrl = getPokemonImageUrl(currentPokemonNumber);
-
+    console.log(currentPokemonImgUrl);
     if (currentPokemonImgUrl !== null) {
       let shouldSilhouette = true;
       silhouette(currentPokemonImgUrl, "shadowImage", shouldSilhouette);
@@ -164,8 +172,13 @@ function silhouette(imageUrl, canvasId, doSilhouette) {
   };
 }
 
+//overlay.style.display = overlay.style.display === "none" ? "block" : "none";
 function onGenFinished() {
   console.log("Gen Finished");
+  let onGenFinished = document.getElementById("gen-finished");
+  let gameContent = document.getElementById("game-content");
+  onGenFinished.style.display = onGenFinished.style.display === "none" ? "flex" : "none";
+  gameContent.classList.add("hidden");
 }
 
 function updateStreak() {
