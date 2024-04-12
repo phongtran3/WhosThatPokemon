@@ -246,6 +246,7 @@ function populateOptions() {
 function checkPokemonAnswer(e) {
   let userSolution = e.target.innerText.toLowerCase();
   let options = document.querySelectorAll(".option");
+  let optionsArray = Array.from(options);
 
   if (userSolution === currentPokemonName) {
     e.target.classList.add("correct");
@@ -256,7 +257,7 @@ function checkPokemonAnswer(e) {
     revealPokemon(false);
   }
 
-  options.forEach((element) => {
+  optionsArray.forEach((element) => {
     if (element.innerText.toLowerCase() == currentPokemonName) {
       element.classList.add("correct");
     }
@@ -325,10 +326,12 @@ function giveUp() {
   document.getElementById("next").style.display = "";
 
   let options = document.querySelectorAll(".option");
-  options.forEach((element) => {
+  let optionsArray = Array.from(options);
+  optionsArray.forEach((element) => {
     if (element.innerText.toLowerCase() == currentPokemonName) {
       element.classList.add("correct");
     }
+
     element.removeEventListener("click", checkPokemonAnswer);
   });
 }

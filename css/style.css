@@ -98,7 +98,7 @@ img {
     z-index: 100;
     background-color: var(--white);
     border: #000000 solid 5px;
-    max-width: 30vh;
+    max-width: 40vh;
 }
 
 .generations-container#gen-container{
@@ -124,7 +124,7 @@ img {
     background: linear-gradient( #FB1B1B 40%, #090029 40%, #090029 42%, #ffffff 42% );
     margin: 0 auto 1rem;
     padding: 0 1rem;
-    /* min-height: 100vh; */
+    min-height: calc(100vh - 168px);
 }
 
 .genre{
@@ -132,6 +132,7 @@ img {
     padding: .75rem 1rem;
     margin-bottom: 1rem;
     cursor: pointer;
+    text-align: center;
 }
 
 .genre:hover,
@@ -204,14 +205,22 @@ img {
 
 #game-content {
     padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-#canvas-container{
+.canvas-container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#canvas-wrapper{
     margin-bottom: 2rem;
     height: 350px;
+    width: 350px;
 }
 
 #shadowImage{
@@ -241,7 +250,8 @@ button {
 }
 
 
-button:hover {
+button:hover,
+button:focus {
     box-shadow: none;
     transform: translateY(0.2em);
 }
@@ -264,7 +274,8 @@ button:hover {
     transition: all 0.3s linear;
 }
 
-.social-links:hover i{
+.social-links:hover i,
+.social-links:focus i{
     transform: scale(1.1);
 }
 
@@ -282,103 +293,72 @@ button:hover {
     display: none;
 }
 
-
-/* @media screen and (max-width: 1200px) {
-    .main-content{
-        width: 75%;
-    }
-    .content-wrapper{
+@media screen and (min-width: 560px) {
+    .footer {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-    #canvas-container{
-        min-height: 350px;
-        margin: 1rem 0;
-    }
-    #shadowImage{
-        max-width: 85%;
-    }
-    .options-container{
-        padding: 0 0.5rem;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        flex-direction: column;
-    }
-    .button-div{
-        display: flex;
-        justify-content: flex-end;
-        column-gap: 1rem;
-        padding: 0 0.5rem;
-        float: none;
-        margin-right: 0;
-    }
-    .copyright, .footer-title{
-        font-size: .7rem;
-    }
-    .social-media-links a{
-        font-size: 1.5rem;
-    }
-    .streak-container{
-        width: 75%;
-        max-width: 800px;
-        min-width: 300px;
+
     }
 }
 
-@media screen and (max-width: 550px) {
-    .footer{
-        background-color: #DFDFDF;
-        display: flex;
-        padding: 1rem;
+@media screen and (min-width: 950px) {
+    #game-content {
+        justify-content: space-evenly;
+        padding: 2rem;
+    }
+
+    .options-container {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+}
+
+@media screen and (min-width: 1400px) {
+    .close-button  {
+        display: none;
+    }
+
+    .streaks {
+        gap: 2.5rem;
+    }
+    .sel-gen-overlay {
+        display: none;
+        position: unset;
+    }
+
+    .content-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
         align-items: flex-start;
-        margin-top: 1rem;
-        gap: 1rem;
-        flex-direction: column;
+        max-width: 1440px;
+        margin: 0 auto;
     }
-}
-
-@media screen and (max-width: 640px){
-    .content-wrapper{
-        flex-direction: column-reverse;
-    }
-    .gen-mobile{
-        display: block;
-        background-color: #ffffff;
-        border: #000000 solid 10px;
-        padding: 1rem;
-        width: 75%;
-        min-width: 300px;
-        text-align: center;
-        line-height: 1.25rem;
-        cursor: pointer;
+    .main-content {
+        margin: 0;
+        min-width: 880px
     }
 
-    .generations-container{
-        position: fixed;
-        top: 0;
-        height: 100%;
-        width: 50%;
-        padding: 10px;
-        box-shadow: 0 0 2px 2px rgba(0,0,0,0.5);
-        transition: all 0.2s;
-        overflow-y: auto;
-        z-index: 100;
+    .gen-mobile {
+        display: none;
     }
-    
+
     .generations-container#gen-container{
-        left: -75%;
+        left: unset;
     }
-    
-    .generations-container#gen-container.showOverlay {
-        left: 0;
+    .generations-container {
+        position: relative;
+        width: auto;
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        padding: 1rem;
+        max-width: unset;
+    }
+
+    .option + .option {
+        margin-left: 2rem;
     }
 }
-
-@media screen and (max-width: 535px){
-    .generations-container{
-        width: 75%;
-        
-    }
-} */
