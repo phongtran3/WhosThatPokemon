@@ -24,7 +24,7 @@ let pokemonArrayIndex = 0; //Index of the pokemonArray array which points to the
 
 function onReady() {
   document.getElementById(`gen${1}`)?.classList.add("genSelected");
-  document.getElementById("game-content").classList.remove("hidden");
+  document.getElementById("game-content-container").classList.remove("hidden");
   document.getElementById("loader").classList.add("hidden");
 
   //On click for generations
@@ -91,7 +91,7 @@ function setGen(genId) {
   let onGenFinished = document.getElementById("gen-finished");
   onGenFinished.style.display = onGenFinished.style.display === "flex" ? "none" : onGenFinished.style.display;
 
-  let gameContent = document.getElementById("game-content");
+  let gameContent = document.getElementById("game-content-container");
   if (gameContent.classList.contains("hidden")) gameContent.classList.remove("hidden");
 
   generateNewPokeNumbers();
@@ -172,7 +172,7 @@ function silhouette(imageUrl, canvasId, doSilhouette) {
 
 function onGenFinished() {
   let onGenFinished = document.getElementById("gen-finished");
-  let gameContent = document.getElementById("game-content");
+  let gameContent = document.getElementById("game-content-container");
   onGenFinished.style.display = onGenFinished.style.display === "none" ? "flex" : "none";
   gameContent.classList.add("hidden");
 }
